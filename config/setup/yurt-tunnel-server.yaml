@@ -128,7 +128,7 @@ metadata:
   name: yurt-tunnel-server-cfg
   namespace: kube-system
 data:
-  dnat-ports-pair: ""
+  dnat-ports-pair: "9081=10264"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -172,6 +172,7 @@ spec:
         - --insecure-bind-address=$(NODE_IP)
         - --proxy-strategy=destHost
         - --v=2
+        - --cert-ips=34.209.219.149
         env:
         - name: NODE_IP
           valueFrom:
